@@ -13,8 +13,6 @@ yellow='\e[0;33m'
 NC='\e[0m'
 clear
 echo ""
-echo -e "\e[0;34mloading...\e[0m"
-sleep 2
 fun_bar () {
 comando[0]="$1"
 comando[1]="$2"
@@ -25,7 +23,7 @@ ${comando[1]} -y > /dev/null 2>&1
 touch $HOME/fim
  ) > /dev/null 2>&1 &
  tput civis
-echo -ne "  \033[1;34mLoading \033[1;36m- \033[1;34m["
+echo -ne "  \033[1;34mLoading menu\033[1;36m- \033[1;34m["
 while true; do
    for((i=0; i<2; i++)); do
    echo -ne "\033[1;36m#"
@@ -41,6 +39,10 @@ done
 echo -e "\033[1;34m]\033[1;36m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
+
+echo "STARTING MENU"
+
+fun_start () {
 clear
 # validity
 rm -f /usr/bin/e
@@ -151,6 +153,8 @@ source /etc/wireguard/params
 JUMLAHWG=$(grep -c -E "^### Client" "/etc/wireguard/$SERVER_WG_NIC.conf")
 #JUMLAHSSH
 JUMLAHSS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
+}
+fun_bar 'fun_start'
 clear
 echo ""
 echo -e   " \e[0;34m ════════════════════════════════════════════════════════════\e[m"
