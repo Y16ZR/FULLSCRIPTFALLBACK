@@ -153,7 +153,7 @@ echo -e   " \e[0;34m ║\e[104m                \e[97m WELCOME TO PREMIUM SCRIPT 
 echo -e   " \e[0;34m ╔══════════════════════════════════════════════════════════╗\e[m"
 echo -e "  \e[0;34m║       ${white}Created By ${red}EZ-Code${NC} (${blue}https://t.me/EzcodeShop${NC})       \e[0;34m║"
 echo -e "  \e[0;34m║                                                          \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mISP           \e[0;34m=\e[0;94m $NAMAISP                                \e[0;34m║"
+echo -e "  \e[0;34m║  \e[0;94mISP           \e[0;34m=\e[0;94m $NAMAISP                             \e[0;34m║"
 echo -e "  \e[0;34m║  \e[0;94mOS            \e[0;34m=\e[0;94m $NAME $Versi_OS          \e[0;34m║"
 echo -e "  \e[0;34m║  \e[0;94mCITY          \e[0;34m=\e[0;94m $CITY ($COUNTRY)                                     \e[0;34m║"
 echo -e "  \e[0;34m║  \e[0;94mIP VPS        \e[0;34m=\e[0;94m $MYIP                                        \e[0;34m║"
