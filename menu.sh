@@ -40,8 +40,6 @@ echo -e "\033[1;34m]\033[1;36m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 
-echo "STARTING MENU"
-
 fun_start () {
 clear
 # validity
@@ -59,6 +57,8 @@ sts="${Info}"
 else
 sts="${Error}"
 fi
+}
+fun_bar 'fun_start'
 clear
 # CERTIFICATE STATUS
 d1=$(date -d "$valid" +%s)
@@ -153,8 +153,6 @@ source /etc/wireguard/params
 JUMLAHWG=$(grep -c -E "^### Client" "/etc/wireguard/$SERVER_WG_NIC.conf")
 #JUMLAHSSH
 JUMLAHSS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
-}
-fun_bar 'fun_start'
 clear
 echo ""
 echo -e   " \e[0;34m ════════════════════════════════════════════════════════════\e[m"
