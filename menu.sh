@@ -13,7 +13,8 @@ yellow='\e[0;33m'
 NC='\e[0m'
 clear
 echo ""
-echo -e "\e[32mloading...\e[0m"
+echo -e "\e[0;34mloading...\e[0m"
+sleep 2
 fun_bar () {
 comando[0]="$1"
 comando[1]="$2"
@@ -61,6 +62,7 @@ clear
 d1=$(date -d "$valid" +%s)
 d2=$(date -d "$today" +%s)
 certifacate=$(( (d1 - d2) / 86400 ))
+clear
 #NAMA ISP
 NAMAISP=$( curl -s ipinfo.io/org | cut -d " " -f 2-10  )
 #TARIKH EXP
@@ -76,6 +78,7 @@ COUNTRY=$( curl -s ipinfo.io/country )
 CITY=$( curl -s ipinfo.io/city )
 # Getting Domain Name
 Domen="$(cat /usr/local/etc/xray/domain)"
+clear
 # Status SSH
 statusssh="$(systemctl show ssh.service --no-page)"
 status_textssh=$(echo "${statusssh}" | grep 'ActiveState=' | cut -f2 -d=)
