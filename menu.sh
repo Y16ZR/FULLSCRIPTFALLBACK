@@ -27,9 +27,9 @@ echo -ne "  \033[1;34mLoading menu\033[1;36m- \033[1;34m["
 while true; do
    for((i=0; i<2; i++)); do
    echo -ne "\033[1;36m#"
-   sleep 0.1s
+   sleep 2s
    done
-   [[ -e $HOME/fim ]] && rm $HOME/fim && break
+   [[ -e $HOME/fim ]] && rm $HOME/fim & break
    echo -e "\033[1;34m]"
    sleep 1s
    tput cuu1
@@ -40,7 +40,6 @@ echo -e "\033[1;34m]\033[1;36m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 
-fun_start () {
 clear
 # validity
 rm -f /usr/bin/e
@@ -57,8 +56,6 @@ sts="${Info}"
 else
 sts="${Error}"
 fi
-}
-fun_bar 'fun_start'
 clear
 # CERTIFICATE STATUS
 d1=$(date -d "$valid" +%s)
@@ -153,20 +150,21 @@ source /etc/wireguard/params
 JUMLAHWG=$(grep -c -E "^### Client" "/etc/wireguard/$SERVER_WG_NIC.conf")
 #JUMLAHSSH
 JUMLAHSS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
+
 clear
 echo ""
 echo -e   " \e[0;34m ════════════════════════════════════════════════════════════\e[m"
 echo -e   " \e[0;34m ║\e[104m                \e[97m WELCOME TO PREMIUM SCRIPT \e[1m               \e[m\e[0;34m║"
 echo -e   " \e[0;34m ╔══════════════════════════════════════════════════════════╗\e[m"
 echo -e "  \e[0;34m║       ${white}Created By ${red}EZ-Code${NC} (${blue}https://t.me/EzcodeShop${NC})       \e[0;34m║"
-echo -e "  \e[0;34m║                                                          \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mISP           \e[0;34m=\e[0;94m $NAMAISP                             \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mOS            \e[0;34m=\e[0;94m $NAME $Versi_OS        \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mCITY          \e[0;34m=\e[0;94m $CITY ($COUNTRY)                          \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mIP VPS        \e[0;34m=\e[0;94m $MYIP                           \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mDOMAIN        \e[0;34m=\e[0;94m $Domen                         \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mEXPIRY SCRIPT \e[0;34m=\e[0;97m $exp ${green} ($certifacate days)                   \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mEXPIRY STATUS \e[0;34m=\e[0;94m $sts                                \e[0;34m║"
+echo -e "  \e[0;34m║"
+echo -e "  \e[0;34m║  \e[0;94mISP           \e[0;34m=\e[0;94m $NAMAISP       "
+echo -e "  \e[0;34m║  \e[0;94mOS            \e[0;34m=\e[0;94m $NAME $Versi_OS"
+echo -e "  \e[0;34m║  \e[0;94mCITY          \e[0;34m=\e[0;94m $CITY ($COUNTRY)"
+echo -e "  \e[0;34m║  \e[0;94mIP VPS        \e[0;34m=\e[0;94m $MYIP           "
+echo -e "  \e[0;34m║  \e[0;94mDOMAIN        \e[0;34m=\e[0;94m $Domen          "
+echo -e "  \e[0;34m║  \e[0;94mEXPIRY SCRIPT \e[0;34m=\e[0;97m $exp ${green} ($certifacate days)"
+echo -e "  \e[0;34m║  \e[0;94mEXPIRY STATUS \e[0;34m=\e[0;94m $sts "
 echo -e "  \e[0;34m╚══════════════════════════════════════════════════════════╝\e[m"
 echo ""
 echo -e "        \e[0;94mSSH : $ssh   \e[0;94mOVPN : $ovpn   \e[0;94mXRAY : $xray   \e[0;94mSS : $xray"
