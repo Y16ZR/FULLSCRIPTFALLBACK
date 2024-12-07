@@ -44,12 +44,10 @@ clear
 rm -f /usr/bin/e
 valid=$( curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}' )
 echo "$valid" > /usr/bin/e
-
 # STATUS EXPIRED ACTIVE
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}(Active)${Font_color_suffix}"
 Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
-
 today=`date -d "0 days" +"%Y-%m-%d"`
 Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
@@ -77,7 +75,6 @@ COUNTRY=$( curl -s ipinfo.io/country )
 CITY=$( curl -s ipinfo.io/city )
 # Getting Domain Name
 Domen="$(cat /usr/local/etc/xray/domain)"
-
 # Status SSH
 statusssh="$(systemctl show ssh.service --no-page)"
 status_textssh=$(echo "${statusssh}" | grep 'ActiveState=' | cut -f2 -d=)
@@ -89,7 +86,6 @@ ssh=$ONSSH
 else
 ssh=$OFFSSH
 fi
-
 clear
 #STATUS OVPN
 statusovpn="$(systemctl show --now openvpn-server@server-tcp-1194 --no-page)"
@@ -102,7 +98,6 @@ ovpn=$ONOVPN
 else
 ovpn=$OFFOVPN
 fi
-
 #status xray
 statusxray="$(systemctl show xray.service --no-page)"
 status_textxray=$(echo "${statusxray}" | grep 'ActiveState=' | cut -f2 -d=)
@@ -136,29 +131,21 @@ else
 	UIDN=500
 fi
 JUMLAHSSH="$(awk -F: '$3 >= '$UIDN' && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
-
 #JUMLAH VMESS WS
 JUMLAHVMESSWS=$(grep -c -E "^#vms " "/usr/local/etc/xray/config.json")
-
 #JUMLAHVMESSWS
 JUMLAHVLESSWS=$(grep -c -E "^#vls " "/usr/local/etc/xray/config.json")
-
 #JUMLAH VLESS XTLS
 JUMLAHVLESSXTLS=$(grep -c -E "^#vxtls " "/usr/local/etc/xray/config.json")
-
 #JUMLAH TROJAN WS
 JUMLAHTROJANWS=$(grep -c -E "^### " "/usr/local/etc/xray/akuntrws.conf")
-
 #JUMLAH TROJAN GRPC TLS$NC
 JUMLAHTROJANGRPC=$(grep -c -E "^### " "/usr/local/etc/xray/akunxtrgrpc.conf")
-
 #JUMLAH WIREGUARD
 source /etc/wireguard/params
 JUMLAHWG=$(grep -c -E "^### Client" "/etc/wireguard/$SERVER_WG_NIC.conf")
-
 #JUMLAHSSH
 JUMLAHSS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
-
 clear
 echo ""
 echo -e   " \e[0;34m ════════════════════════════════════════════════════════════\e[m"
@@ -166,10 +153,10 @@ echo -e   " \e[0;34m ║\e[104m                \e[97m WELCOME TO PREMIUM SCRIPT 
 echo -e   " \e[0;34m ╔══════════════════════════════════════════════════════════╗\e[m"
 echo -e "  \e[0;34m║       ${white}Created By ${red}EZ-Code${NC} (${blue}https://t.me/EzcodeShop${NC})       \e[0;34m║"
 echo -e "  \e[0;34m║                                                          \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mISP           \e[0;34m=\e[0;94m $NAMAISP       \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mOS            \e[0;34m=\e[0;94m $NAME $Versi_OS                   \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mCITY          \e[0;34m=\e[0;94m $CITY ($COUNTRY)                             \e[0;34m║"
-echo -e "  \e[0;34m║  \e[0;94mIP VPS        \e[0;34m=\e[0;94m $MYIP                          \e[0;34m║"
+echo -e "  \e[0;34m║  \e[0;94mISP           \e[0;34m=\e[0;94m $NAMAISP                                        \e[0;34m║"
+echo -e "  \e[0;34m║  \e[0;94mOS            \e[0;34m=\e[0;94m $NAME $Versi_OS          \e[0;34m║"
+echo -e "  \e[0;34m║  \e[0;94mCITY          \e[0;34m=\e[0;94m $CITY ($COUNTRY)                                     \e[0;34m║"
+echo -e "  \e[0;34m║  \e[0;94mIP VPS        \e[0;34m=\e[0;94m $MYIP                                        \e[0;34m║"
 echo -e "  \e[0;34m║  \e[0;94mDOMAIN        \e[0;34m=\e[0;94m $Domen                                        \e[0;34m║"
 echo -e "  \e[0;34m║  \e[0;94mEXPIRY SCRIPT \e[0;34m=\e[0;97m $exp ${green} ($certifacate days)                              \e[0;34m║"
 echo -e "  \e[0;34m║  \e[0;94mEXPIRY STATUS \e[0;34m=\e[0;94m $sts                               \e[0;34m║"
@@ -185,7 +172,6 @@ echo -e "      $green[${white}•3${green}] ${white}SHADOWSOCKS$NC          $gre
 echo -e "      $green[${white}•4${green}] ${white}SHADOWSOCK-R$NC         $green[${white}•8${green}] ${white}XRAY TROJAN GRPC TLS$NC"
 echo -e "  \e[0;34m┃                                                          ┃"
 echo -e "  \e[0;34m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-
 echo -e "  ┏       ${yellow}SYSTEM MENU             \e[0;34m┃$NC       ${yellow}TOTAL USER ${NC}        \e[0;34m┓"
 echo -e "  \e[0;34m┃$NC      $green—————————————            \e[0;34m┃      ${green}————————————$NC        \e[0;34m┃"
 echo -e "  \e[0;34m┃$NC$green[${white}•9${green}] ${white}RESTART ALL SERVICE       \e[0;34m┃$NC    SSH & OVPN $green   =$NC $yellow$JUMLAHSSH     \e[0;34m┃$NC"
